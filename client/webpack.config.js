@@ -14,7 +14,7 @@ module.exports = () => {
       install: './src/js/install.js'
     },
     output: {
-      filename: 'bundle.js',
+      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
@@ -33,6 +33,10 @@ module.exports = () => {
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: "asset/rescource",
+        },
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
         },
         {
           test: /\.m?js$/,
